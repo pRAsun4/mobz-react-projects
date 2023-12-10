@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import './App.css'
 import ChildComponent from './ChildComponent';
+import TasksTwo from './Tasks/TaskTwo';
+import TasksThree from './Tasks/TasksThree';
 
 function App() {
+
   // point 1
   const arryList = [
     {
@@ -92,10 +95,12 @@ function App() {
       <div className="wrapper" style={{
         display: "flex",
         flexDirection: "column",
+        
+        textAlign: 'center',
       }}>
         <h1>REACT TASK 1</h1>
         <h3>This is a simple jsx text </h3>
-        <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
+        <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: 'center', }}>
           <h3>This is Record List</h3>
           <ul>
             {arryList.map(records => (
@@ -108,7 +113,7 @@ function App() {
           </ul>
         </div>
 
-        <div className="container">
+        <div className="container" style={{ height: '10rem' }}>
           <ul style={{ display: "flex", flexDirection: "column", listStyle: 'none' }}>
             <li>
 
@@ -121,7 +126,7 @@ function App() {
           </ul>
         </div>
 
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '9rem', gap: '2rem' }}>
           <h3><b>ENABLE / DISABLE BUTTONS</b> </h3>
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
             <button onClick={enableButton} style={{ width: '10rem' }} disabled={!en}>{en ? 'Enabled' : 'Disabled'} </button>
@@ -130,7 +135,7 @@ function App() {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container" style={{ height: '8rem' }}>
           <input
             type="text"
             placeholder='Type here'
@@ -147,30 +152,35 @@ function App() {
           <p> {changeState} </p>
         </div>
 
-        <div className="container">
+        <div className="container" >
           <button onClick={addChildComponent}>Add Child Component</button>
           {childIndices.map((index) => (
             <ChildComponent key={index} index={index} />
           ))}
         </div>
 
-        <div className="container">
+        <div className="container" style={{ display: 'flex', alignItems: 'center', flexDirection:'column' }}>
           <h3>Sum calculator</h3>
-          <label>
-            Number 1:
-            <input type="number" value={num1} onChange={(e) => setNum1(e.target.value)} />
-          </label>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            <label>
+              Number 1:
+              <input type="number" value={num1} style={{height:'2rem', marginLeft:'2rem'}} onChange={(e) => setNum1(e.target.value)} />
+            </label>
 
-          <label>
-            Number 2:
-            <input type="number" value={num2} onChange={(e) => setNum2(e.target.value)} />
-          </label>
-          <button onClick={calculateSum}>Calculate Sum</button>
-          <p>Sum: {sum}</p>
+            <label>
+              Number 2:
+              <input type="number" value={num2} style={{height:'2rem',marginLeft:'2rem'}} onChange={(e) => setNum2(e.target.value)} />
+            </label>
+          </div>
+          <div style={{marginTop:'2rem',}}>
+            <button onClick={calculateSum}>Calculate Sum</button>
+            <p>Sum: {sum}</p>
+          </div>
         </div>
       </div>
 
-
+      <TasksTwo/>
+      <TasksThree/>
     </>
   )
 }
